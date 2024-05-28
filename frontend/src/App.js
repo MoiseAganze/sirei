@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="card-title">Debut de Creation!</h2>
+          <p>
+            Bienvenue dans le projet SIREI (site de rencontre entrepreneur
+            investisseur)
+          </p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-primary">Commencer</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
