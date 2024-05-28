@@ -9,7 +9,7 @@ function App() {
           <h2 className="card-title">Debut de Creation!</h2>
           <p>
             Bienvenue dans le projet SIREI (site de rencontre entrepreneur
-            investisseur)
+            investisseur)...
           </p>
           <div className="card-actions justify-end">
             <button className="btn btn-primary">Commencer</button>
