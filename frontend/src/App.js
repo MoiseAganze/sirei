@@ -1,22 +1,29 @@
-// src/App.js
-import React from "react";
+import React, { useEffect } from "react";
+import "./App.css"; // Assurez-vous que ce fichier contient les styles DaisyUI
+import Navbar from "./composantsApp/Navbar";
+import { ThemeProvider, useTheme } from "./ThemeContext";
+import Intro from "./composantsApp/Intro";
+
+function AppContent() {
+  const { theme } = useTheme();
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  return (
+    <div className="App">
+      <Navbar />
+      <Intro />
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Debut de Creation!</h2>
-          <p>
-            Bienvenue dans le projet SIREI (site de rencontre entrepreneur
-            investisseur)...
-          </p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Commencer</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 
