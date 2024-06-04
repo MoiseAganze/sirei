@@ -17,7 +17,7 @@ function Intro(props) {
           </h1>
           <p className="mb-5 text-neutral-content">
             Bienvenue sur notre plateforme, le point de rencontre idéal entre
-            entrepreneurs ambitieux et investisseurs visionnaires.
+            entrepreneurs ambitieux et investisseurs visionnaires
           </p>
 
           {/* Modal */}
