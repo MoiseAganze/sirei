@@ -1,7 +1,9 @@
 from datetime import datetime
 from django.db import models
+import uuid
 
 class Person (models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     gender = models.CharField(max_length=30)
@@ -16,13 +18,15 @@ class Investor(Person):
     experience_year = models.IntegerField(null=False)
 
 class Project(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     name = models.CharField(max_length=255)
     sector = models.CharField(max_length=255)
     description = models.TextField(null=False)
     author = models.ForeignKey(Entrepreneur, on_delete=models.CASCADE)
-    date_published = models.DateTimeField(default=datetime.now())
+    date_published = models.DateTimeField()
 
 class Comment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     content = models.TextField(null=False)
     author = models.ForeignKey(Person, on_delete=models.CASCADE)
-    date_send = models.DateTimeField(default=datetime.now())
+    date_send = models.DateTimeField()
