@@ -9,6 +9,7 @@ class Person (models.Model):
     gender = models.CharField(max_length=30)
     profile = models.CharField(max_length=80)
     domain = models.CharField(max_length=255)
+    email = models.EmailField()
     
     def __str__(self) -> str:
         return f"{self.first_name} {self.name}"
