@@ -29,7 +29,7 @@ class Project(models.Model):
     name = models.CharField(max_length=255)
     sector = models.CharField(max_length=255)
     description = models.TextField(null=False)
-    author = models.ForeignKey(Entrepreneur, on_delete=models.CASCADE)
+    author = models.ForeignKey(Entrepreneur, on_delete=models.CASCADE, related_name="project")
     date_published = models.DateTimeField()
 
     
@@ -40,7 +40,7 @@ class Project(models.Model):
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     content = models.TextField(null=False)
-    author = models.ForeignKey(Person, on_delete=models.CASCADE)
+    author = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="comment")
     date_send = models.DateTimeField()
     
     def __str__(self) -> str:
