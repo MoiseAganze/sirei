@@ -44,7 +44,9 @@ function Navbar() {
   return (
     <div className="navbar bg-base-100 border-b-2 border-purple-50">
       <div className="navbar-start">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a href="#" className="btn btn-ghost text-xl">
+          daisyUI
+        </a>
       </div>
       <div className="navbar-center">{themeSwitchIcon}</div>
       <div className="navbar-end gap-2">
@@ -73,16 +75,16 @@ function Navbar() {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
+              <a href="#" className="justify-between">
                 Profile
                 <span className="badge">New</span>
               </a>
             </li>
             <li>
-              <a>Settings</a>
+              <a href="#">Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a href="#">Logout</a>
             </li>
           </ul>
         </div>
