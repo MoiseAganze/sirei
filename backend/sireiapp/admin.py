@@ -14,8 +14,12 @@ class ModelProject(ModelAdmin):
 class ModelCommentaire(ModelAdmin):
     list_display = ("author", "content")
 
+class ModelMessage(ModelAdmin):
+    list_display = ("author", "content")
+
 
 admin.site.register(model.Entrepreneur, ModelEntrepreneur)
 admin.site.register(model.Investor, ModelInvestor)
 admin.site.register(model.Comment, ModelCommentaire)
 admin.site.register(model.Project, ModelProject)
+admin.site.register(model.Message, ModelMessage)
