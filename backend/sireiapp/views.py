@@ -14,8 +14,22 @@ class EntrepreneurAPIView(
     
     queryset = Entrepreneur.objects.all()
     serializer_class = EntrepreneurSerializer
-    permission_classes = (EntrepreneurModelPermission(),)
+    permission_classes = (EntrepreneurModelPermission,)
     lookup_field = 'id'
+    
+    def get(self, request, *args, **kwargs):
+        if kwargs.get('id'):
+            return self.retrieve(request, *args, **kwargs)
+        return self.list(request, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+    
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+    
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
 
 
 class EntrepreneurCreateAPIView(generics.CreateAPIView):
@@ -34,6 +48,20 @@ class InvestorAPIView(
     queryset = Investor.objects.all()
     serializer_class = InvestorSerializer
     lookup_field = 'id'
+    
+    def get(self, request, *args, **kwargs):
+        if kwargs.get('id'):
+            return self.retrieve(request, *args, **kwargs)
+        return self.list(request, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+    
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+    
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
 
 
 class InvestorCreateAPIView(generics.CreateAPIView):
@@ -76,3 +104,14 @@ class CommentAPIView(
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     lookup_field = 'id'
+    
+    
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+    
