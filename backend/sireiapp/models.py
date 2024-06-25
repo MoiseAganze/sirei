@@ -7,13 +7,13 @@ class Person (models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(_("name"), max_length=100)
     first_name = models.CharField(_("firstName"), max_length=100)
-    gender = models.CharField(_("gender"), max_length=30)
-    profile = models.CharField(_("profile"), max_length=80)
+    gender = models.CharField(_("gender"), max_length=6)
+    profile = models.CharField(_("profile"), max_length=25)
     domain = models.CharField(_("domain"), max_length=100)
     activity = models.CharField(_("activity"), max_length=80)
-    biography = models.TextField(_("biography"), null=True)
+    biography = models.TextField(_("biography"), null=True, blank=True)
     email = models.EmailField()
-    profile_image = models.ImageField(_("profile image"), upload_to="media/image", null=True, blank=True)
+    profile_image = models.ImageField(_("profile image"), upload_to="profiles", null=True, blank=True)
     
     def __str__(self) -> str:
         return f"{self.first_name} {self.name}"
@@ -21,7 +21,7 @@ class Person (models.Model):
 
 class Entrepreneur(Person):
     phone_number = models.CharField(_("phone number"), max_length=30)
-    project_file = models.FileField(_("project file"), upload_to="media/file", blank=True, null=True)
+    project_file = models.FileField(_("project file"), upload_to="projects", blank=True, null=True)
 
 
 class Investor(Person):    
