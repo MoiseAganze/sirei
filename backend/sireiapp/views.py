@@ -42,15 +42,28 @@ class InvestorCreateAPIView(generics.CreateAPIView):
     permission_classes = (permissions.AllowAny,)
 
 
-class MessageAPIView(generics.CreateAPIView, generics.ListAPIView):
+class MessageAPIView(generics.ListCreateAPIView):
     queryset = Message.objects.all()
-    serializer_class = MessageSerializer 
-            
+    serializer_class = MessageSerializer    
 
-class ProjectAPIView(viewsets.ModelViewSet):
+
+class ProjectAPIView(mixins.CreateModelMixin,
+                    mixins.ListModelMixin,
+                    mixins.DestroyModelMixin,
+                    generics.GenericAPIView):
+    
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
     lookup_field = 'id'
+    
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+    
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
 
 
 class CommentAPIView(
