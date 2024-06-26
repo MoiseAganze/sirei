@@ -3,10 +3,10 @@ import sireiapp.models as model
 from django.contrib.admin import ModelAdmin
 
 class ModelEntrepreneur(ModelAdmin):
-    list_display = ("id", "first_name", "name", "email")
+    list_display = ("id", "first_name", "name")
 
 class ModelInvestor(ModelAdmin):
-    list_display = ("id", "first_name", "name", "experience_year", "email")
+    list_display = ("id", "first_name", "name", "experience_year",)
 
 class ModelProject(ModelAdmin):
     list_display = ("name", "description")

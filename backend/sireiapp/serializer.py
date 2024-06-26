@@ -1,5 +1,10 @@
 from rest_framework import serializers
+
+from .register import register_user
 from . import models
+from django.contrib.auth import get_user_model
+
+SireiUser = get_user_model()
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,16 +13,58 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class EntrepreneurSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(write_only=True)
+    password = serializers.CharField(write_only=True, style={'type':'password'})
+    
     class Meta:
         model = models.Entrepreneur
-        fields = '__all__'
-
+        fields = (
+            "email",
+            "password",
+            "name",
+            "first_name",
+            'gender',
+            "profile",
+            "domain",
+            "activity",
+            "biography",
+            "profile_image",
+            "phone_number",
+            "project_file",
+        )
+        
+    def create(self, validated_data):
+        request = self.context['request']
+        if register_user(request, validated_data, SireiUser) == 1:
+            return super().create(validated_data)
+        return {}
+    
 
 class InvestorSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(write_only=True)
+    password = serializers.CharField(write_only=True, style={'type':'password'})
+    
     class Meta:
         model = models.Investor
-        fields = '__all__'
-
+        fields = (
+            "email",
+            "password",
+            "name",
+            "first_name",
+            'gender',
+            "profile",
+            "domain",
+            "activity",
+            "biography",
+            "profile_image",
+            "experience_year",
+        )
+        
+    def create(self, validated_data):
+        request = self.context['request']
+        if register_user(request, validated_data, SireiUser) == 1:
+            return super().create(validated_data)
+        return {}
 
 class MessageSerializer(serializers.ModelSerializer):
     class Meta:
