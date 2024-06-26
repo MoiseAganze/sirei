@@ -65,3 +65,28 @@ class Message(models.Model):
         if len(self.content) >= 20:
             return self.content[:19] + "..."
         return self.content
+    
+class WaitingEntrepreneur(models.Model):
+    name = models.CharField(_("name"), max_length=100)
+    first_name = models.CharField(_("firstName"), max_length=100)
+    gender = models.CharField(_("gender"), max_length=6)
+    profile = models.CharField(_("profile"), max_length=25)
+    domain = models.CharField(_("domain"), max_length=100)
+    activity = models.CharField(_("activity"), max_length=80)
+    biography = models.TextField(_("biography"), null=True, blank=True)    
+    profile_image = models.ImageField(_("profile image"), upload_to="profiles", null=True, blank=True)
+    phone_number = models.CharField(_("phone number"), max_length=30)
+    project_file = models.FileField(_("project file"), upload_to="projects", blank=True, null=True)
+
+
+class WaitingInvestor(models.Model):
+    name = models.CharField(_("name"), max_length=100)
+    first_name = models.CharField(_("firstName"), max_length=100)
+    gender = models.CharField(_("gender"), max_length=6)
+    profile = models.CharField(_("profile"), max_length=25)
+    domain = models.CharField(_("domain"), max_length=100)
+    activity = models.CharField(_("activity"), max_length=80)
+    biography = models.TextField(_("biography"), null=True, blank=True)    
+    profile_image = models.ImageField(_("profile image"), upload_to="profiles", null=True, blank=True)
+    experience_year = models.IntegerField(_("experience year"))
+    
