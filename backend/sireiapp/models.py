@@ -11,8 +11,7 @@ class Person (models.Model):
     profile = models.CharField(_("profile"), max_length=25)
     domain = models.CharField(_("domain"), max_length=100)
     activity = models.CharField(_("activity"), max_length=80)
-    biography = models.TextField(_("biography"), null=True, blank=True)
-    email = models.EmailField()
+    biography = models.TextField(_("biography"), null=True, blank=True)    
     profile_image = models.ImageField(_("profile image"), upload_to="profiles", null=True, blank=True)
     
     def __str__(self) -> str:
