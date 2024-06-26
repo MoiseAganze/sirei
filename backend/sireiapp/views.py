@@ -36,6 +36,12 @@ class EntrepreneurCreateAPIView(generics.CreateAPIView):
     queryset = Entrepreneur.objects.all()
     serializer_class = EntrepreneurSerializer
     permission_classes = (permissions.AllowAny,)
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        
+        return context
 
 
 class InvestorAPIView(
@@ -68,6 +74,12 @@ class InvestorCreateAPIView(generics.CreateAPIView):
     queryset = Investor.objects.all()
     serializer_class = InvestorSerializer
     permission_classes = (permissions.AllowAny,)
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context['request'] = self.request
+        
+        return context
 
 
 class MessageAPIView(generics.ListCreateAPIView):
