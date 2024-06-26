@@ -2,7 +2,7 @@ class ProfileError(TypeError):
     pass
 
 
-def register_user(request, validated_data, _user, error_msg="") -> int:
+def register_user(request, validated_data, _user) -> int:
     """This function register a user using the value
     of attribute Profile. If profile equal to entrepreneur,
     the user is registered like entrepreneur, otherwise it is
