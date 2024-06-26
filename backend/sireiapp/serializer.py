@@ -37,7 +37,9 @@ class EntrepreneurSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         request = self.context['request']
         if register_user(request, validated_data, SireiUser) == 1:
-            return super().create(validated_data)
+            instance = models.WaitingEntrepreneur(**validated_data)
+            instance.save()
+            return instance
         return {}
     
 
@@ -64,7 +66,9 @@ class InvestorSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         request = self.context['request']
         if register_user(request, validated_data, SireiUser) == 1:
-            return super().create(validated_data)
+            instance = models.WaitingInvestor(**validated_data)
+            instance.save()
+            return instance
         return {}
 
 class MessageSerializer(serializers.ModelSerializer):
