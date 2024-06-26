@@ -1,6 +1,7 @@
 from django.contrib import admin
 from account.models import SireiUser
 from django.core.mail import send_mail
+from sireiapp.remove_user import remove_user_from_waiting_table
 
 def mail(user, name_compte: str):
     return send_mail(
@@ -18,6 +19,8 @@ def approve_users(modeladmin, request, queryset):
         user.is_approved = True
         user.is_active = True
         user.save()
+        
+        remove_user_from_waiting_table(user)
         
         # if user.is_entrepreneur:
         #     mail(user, "Entrepreneur")

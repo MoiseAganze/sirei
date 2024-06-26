@@ -77,6 +77,7 @@ class WaitingEntrepreneur(models.Model):
     profile_image = models.ImageField(_("profile image"), upload_to="profiles", null=True, blank=True)
     phone_number = models.CharField(_("phone number"), max_length=30)
     project_file = models.FileField(_("project file"), upload_to="projects", blank=True, null=True)
+    email = models.EmailField(_("email"))
 
 
 class WaitingInvestor(models.Model):
@@ -89,4 +90,5 @@ class WaitingInvestor(models.Model):
     biography = models.TextField(_("biography"), null=True, blank=True)    
     profile_image = models.ImageField(_("profile image"), upload_to="profiles", null=True, blank=True)
     experience_year = models.IntegerField(_("experience year"))
+    email = models.EmailField(_("email"))
     

@@ -17,7 +17,7 @@ def register_user(request, validated_data, _user) -> int:
     name = validated_data.get("name")
     first_name = validated_data.get("first_name")
     username = f"@{first_name}{name}".lower()        
-    email = validated_data.pop("email")
+    email = validated_data.get("email")
     password = validated_data.pop("password")
     profile = validated_data.get("profile")
     
