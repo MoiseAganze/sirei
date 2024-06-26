@@ -2,4 +2,5 @@ projet_sirei/__pycache__
 mysql.cnf
 sireiapp/__pycache__
 sireiapp/migrations/__pycache__
-/account/__pycache__
+account/__pycache__
+account/migrations/__pycache__
