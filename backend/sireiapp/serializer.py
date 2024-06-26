@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from .validators import validate_email
 from .register import register_user
 from . import models
 from django.contrib.auth import get_user_model
@@ -13,7 +14,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class EntrepreneurSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(write_only=True)
+    email = serializers.EmailField(write_only=True, validators=[validate_email])
     password = serializers.CharField(write_only=True, style={'type':'password'})
     
     class Meta:
@@ -41,7 +42,7 @@ class EntrepreneurSerializer(serializers.ModelSerializer):
     
 
 class InvestorSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(write_only=True)
+    email = serializers.EmailField(write_only=True, validators=[validate_email])
     password = serializers.CharField(write_only=True, style={'type':'password'})
     
     class Meta:
