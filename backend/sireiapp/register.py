@@ -25,7 +25,7 @@ def register_user(request, validated_data, _user) -> int:
 
     if endpoint == "/api/entrepreneur/create/":
         if not profile.lower() == "entrepreneur":
-            raise ProfileError("'Profile type' %s: This endpoint is reserved to entrepreneur" % profile)
+            raise ProfileError("'Profile type' %s: This endpoint is reserved for entrepreneurs" % profile)
                     
         user = _user.objects.create_user(username=username, email=email, password=password)
         user.is_active = False
@@ -35,7 +35,7 @@ def register_user(request, validated_data, _user) -> int:
 
     if endpoint == "/api/investor/create/":
         if profile.lower() != "investisseur":
-            raise ProfileError("'Profile type' %s: This endpoint is reserved to investor" % profile)
+            raise ProfileError("'Profile type' %s: This endpoint is reserved for investors" % profile)
                 
         user = _user.objects.create_user(username=username, email=email, password=password)
         user.is_active = False

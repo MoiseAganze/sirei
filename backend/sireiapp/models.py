@@ -2,6 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Person (models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -32,7 +35,7 @@ class Project(models.Model):
     name = models.CharField(_("name"), max_length=255)
     sector = models.CharField(_("sector"), max_length=255)
     description = models.TextField(_("description"), null=False)
-    author = models.ForeignKey(Entrepreneur, on_delete=models.CASCADE, related_name="project")
+    owner = models.ForeignKey(Entrepreneur, on_delete=models.CASCADE, related_name="project")
     published = models.DateTimeField(_("published"), auto_now_add=True)
     is_available = models.BooleanField(_("is available"), default=True)
     
@@ -44,7 +47,7 @@ class Project(models.Model):
 class Comment(models.Model):
     id = models.UUIDField(_("ID"), primary_key=True, default=uuid.uuid4, editable=False)
     content = models.TextField(_("content"), null=False)
-    author = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="comment")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comment")
     date_send = models.DateTimeField(auto_now_add=True)
     
     def __str__(self) -> str:
@@ -56,7 +59,7 @@ class Comment(models.Model):
 class Message(models.Model):
     id = models.UUIDField(_("ID"), primary_key=True, default=uuid.uuid4, editable=False)
     content = models.TextField(_("content"))
-    author = models.ForeignKey(Person, on_delete=models.CASCADE, related_name="message")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="message")
     
     def __str__(self) -> str:
         if len(self.content) >= 20:
