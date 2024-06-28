@@ -4,6 +4,9 @@ import Navbar from "./composantsApp/Navbar";
 import { ThemeProvider, useTheme } from "./ThemeContext";
 import Intro from "./composantsApp/Intro";
 import Posts from "./posts/Posts";
+import Slider from "./composantsApp/SwiperSlider";
+import Footer from "./composantsApp/Footer";
+import Propose from "./composantsApp/Propose";
 
 function AppContent() {
   const { theme } = useTheme();
@@ -15,8 +18,11 @@ function AppContent() {
   return (
     <div className="App">
       <Navbar />
-      <Intro />
+
+      <Slider />
+      <Propose />
       <Posts />
+      <Footer />
     </div>
   );
 }

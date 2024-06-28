@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CardY from "../composantsApp/CardY";
 import Comment from "../composantsApp/Comment";
+import Post from "../composantsApp/Post";
 
 function Posts(props) {
   const [commentbox, setcommentbox] = useState("hidden");
@@ -13,12 +13,12 @@ function Posts(props) {
   return (
     <div className="flex flex-row w-full ">
       <div className="w-full md:w-2/3 flex flex-col m-5 gap-4 justify-center items-center">
-        <CardY showcomment={handleshowcomment} />
-        <CardY showcomment={handleshowcomment} />
-        <CardY showcomment={handleshowcomment} />
-        <CardY showcomment={handleshowcomment} />
-        <CardY showcomment={handleshowcomment} />
-        <CardY showcomment={handleshowcomment} />
+        <Post showcomment={handleshowcomment} />
+        <Post showcomment={handleshowcomment} />
+        <Post showcomment={handleshowcomment} />
+        <Post showcomment={handleshowcomment} />
+        <Post showcomment={handleshowcomment} />
+        <Post showcomment={handleshowcomment} />
       </div>
       <div className="hidden md:block w-1/3 justify-center items-center border-l border-spacing-1 border-slate-600 p-2 shadow-slate-700 shadow-lg">
         <Comment />

@@ -31,7 +31,7 @@ class Project(models.Model):
     description = models.TextField(null=False)
     author = models.ForeignKey(Entrepreneur, on_delete=models.CASCADE, related_name="project")
     date_published = models.DateTimeField()
-
+    
     
     def __str__(self) -> str:
         return f"{self.name}"

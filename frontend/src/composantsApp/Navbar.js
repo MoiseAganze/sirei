@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "../ThemeContext";
-
+import { Link } from "react-router-dom";
 function Navbar() {
   const { theme, toggleTheme } = useTheme();
 
@@ -42,10 +42,10 @@ function Navbar() {
   );
 
   return (
-    <div className="navbar bg-base-100 border-b-2 border-purple-50">
+    <div className="navbar bg-base-100 border-b-2 border-purple-50 fixed z-50">
       <div className="navbar-start">
         <a href="#" className="btn btn-ghost text-xl">
-          daisyUI
+          SIREI
         </a>
       </div>
       <div className="navbar-center">{themeSwitchIcon}</div>
@@ -64,10 +64,7 @@ function Navbar() {
             className="btn btn-ghost btn-circle avatar"
           >
             <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
+              <img alt="Tailwind CSS Navbar component" src="images/nar.jpg" />
             </div>
           </div>
           <ul
@@ -75,16 +72,16 @@ function Navbar() {
             className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="#" className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+              <Link to="/publier" className="justify-between">
+                Publier
+                <span className="badge">projet</span>
+              </Link>
             </li>
             <li>
-              <a href="#">Settings</a>
+              <a href="#">profil</a>
             </li>
             <li>
-              <a href="#">Logout</a>
+              <Link to="/connexion/entrepreneur">se déconnecter</Link>
             </li>
           </ul>
         </div>

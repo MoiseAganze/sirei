@@ -1,0 +1,11 @@
+/* styles.css */
+.mySwiper {
+  width: 100%;
+  height: 100%;
+}
+
+.mySwiper img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
