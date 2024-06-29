@@ -128,12 +128,12 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.SessionAuthentication'],
 }
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 EMAIL_USE_TLS = True
-EMAIL_HOST = '127.0.0.1'
-EMAIL_HOST_USER = 'sirei'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'josuepanzu8@gmail.com'
 EMAIL_SUBJECT_PREFIX = '[Sirei] '
 EMAIL_PASSWORD = ''
-EMAIL_PORT = 25
+EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
