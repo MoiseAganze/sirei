@@ -124,10 +124,6 @@ function InscriptionInv(props) {
               vous êtes entrepreneur ?
             </Link>
           </div>
-
-          <Link className="ml-4 btn-link" to="#">
-            mot de passe oublié ?
-          </Link>
         </div>
         <input
           type="submit"

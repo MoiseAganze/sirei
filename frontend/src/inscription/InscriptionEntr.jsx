@@ -238,10 +238,6 @@ function InscriptionEntr(props) {
               vous êtes investisseur ?
             </Link>
           </div>
-
-          <Link className="ml-4 btn-link" to="#">
-            mot de passe oublié ?
-          </Link>
         </div>
         <Field
           type="submit"

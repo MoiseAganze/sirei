@@ -10,7 +10,10 @@ function Post(props) {
           className="btn btn-ghost btn-circle avatar"
         >
           <div className="w-10 rounded-full">
-            <img alt="Tailwind CSS Navbar component" src="images/nar.jpg" />
+            <img
+              alt="Tailwind CSS Navbar component"
+              src="../../../images/nar.jpg"
+            />
           </div>
         </div>
         <div className="flex items-center">
@@ -22,7 +25,7 @@ function Post(props) {
       </div>
       <figure className="w-2/3 ">
         <img
-          src="images/nar.jpg"
+          src="../../../images/nar.jpg"
           className="w-full rounded-t-3xl"
           alt="Shoes"
         />
@@ -44,10 +47,14 @@ function Post(props) {
         </ul>
         <div className="card-actions justify-end">
           <div className="badge badge-outline py-1 cursor-pointer">
-            <img src="images/star.svg" alt="" />
+            <img src="../../../images/star.svg" alt="" />
           </div>
           <div className="badge badge-outline py-1 cursor-pointer">
-            <img src="images/comment.svg" alt="" onClick={props.showcomment} />
+            <img
+              src="../../../images/comment.svg"
+              alt=""
+              onClick={props.showcomment}
+            />
           </div>
         </div>
       </div>

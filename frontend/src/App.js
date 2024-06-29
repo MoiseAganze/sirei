@@ -22,7 +22,6 @@ function AppContent() {
       <Slider />
       <Propose />
       <Posts />
-      <Footer />
     </div>
   );
 }
