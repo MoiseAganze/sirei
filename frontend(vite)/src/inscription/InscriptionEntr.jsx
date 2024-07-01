@@ -1,10 +1,9 @@
-import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import toast, { Toaster } from "react-hot-toast";
 
-function InscriptionEntr(props) {
+function InscriptionEntr() {
   const nav = useNavigate();
   const initialvalues = {
     nom: "",
@@ -18,6 +17,7 @@ function InscriptionEntr(props) {
     cpassword: "",
     description: "",
   };
+
   const validationSchema = Yup.object().shape({
     nom: Yup.string()
       .max(10, "au plus 10 caractères")
@@ -45,6 +45,7 @@ function InscriptionEntr(props) {
       .required("de quel genre êtes-vous ?"),
     situation: Yup.string().required("veuillez choisir une option!"),
   });
+
   const onSubmit = (data) => {
     console.log(data);
     toast.success("demande d'inscription envoyée !", { duration: 5000 });
@@ -52,202 +53,210 @@ function InscriptionEntr(props) {
       nav("/connexion/entrepreneur");
     }, 5000);
   };
+
   return (
-    <Formik
-      className="w-full min-h-screen flex justify-center"
-      initialValues={initialvalues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
+    <div
+      className="min-h-screen bg-cover bg-center flex items-center justify-center p-6"
+      style={{
+        background: "url(images/renc1.jpg)",
+      }}
     >
-      <Form className="w-auto md:w-1/2 p-5 m-2 flex flex-col gap-3 border border-spacing-2">
-        <div class="text-center mb-5">
-          <h1 class="text-4xl font-bold p-5 shadow-md w-auto">
-            Inscription d'entrepreneur
-          </h1>
-        </div>
-        <label className="input input-bordered flex items-center gap-2">
-          Name:
-          <Field
-            type="text"
-            name="nom"
-            className="grow"
-            placeholder="Entrer votre nom"
-          />
-          <ErrorMessage
-            className="text-sm text-red-700"
-            name="nom"
-            component="p"
-          />
-        </label>
-        <label className="input input-bordered flex items-center gap-2">
-          Prenom:
-          <Field
-            type="text"
-            name="prenom"
-            className="grow"
-            placeholder="Votre prenom"
-          />
-          <ErrorMessage
-            className="text-sm text-red-700"
-            name="prenom"
-            component="p"
-          />
-        </label>
-        <label className="input input-bordered flex items-center gap-2">
-          Role:
-          <Field
-            type="text"
-            name="role"
-            className="grow"
-            value={"entrepreneur"}
-          />
-        </label>
-
-        <div>
-          <label
-            for="genre"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Genre
-          </label>
-          <div className="mt-2 flex space-x-4">
-            <label className="inline-flex items-center">
-              <Field
-                type="radio"
-                className="form-radio text-blue-600"
-                name="genre"
-                value="masculin"
-              />
-
-              <span className="ml-2">Homme</span>
-            </label>
-            <label className="inline-flex items-center">
-              <Field
-                type="radio"
-                className="form-radio text-pink-600"
-                name="genre"
-                value="feminin"
-              />
-              <span className="ml-2">Femme</span>
-            </label>
-            <ErrorMessage
-              className="text-sm text-red-700"
-              name="genre"
-              component="p"
-            />
+      <Formik
+        initialValues={initialvalues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        <Form className="w-full max-w-lg bg-opacity-90 p-8 rounded-lg shadow-2xl space-y-6 animate__animated animate__fadeIn">
+          <div className="text-center mb-5">
+            <h1 className="text-xl md:text-4xl font-bold p-5 shadow-md w-auto text-white bg-gradient-to-r from-black to-gray-800 rounded-lg animate-pulse">
+              {" Inscription d'entrepreneur"}
+            </h1>
           </div>
-        </div>
-        <div>
-          <label for="situation" className="block text-sm font-semibold">
-            Vous etes{" "}
-          </label>
-          <Field
-            as="select"
-            name="situation"
-            className="select select-primary w-full max-w-xs"
-          >
-            <option value="" disabled selected>
-              Choisir une option
-            </option>
-            <option value="Travailleur">Travailleur</option>
-            <option value="Etudiant">Etudiant</option>
-            <option value="Eleve">Eleve</option>
-            <option value="Chomeur">Chomeur</option>
-          </Field>
-          <ErrorMessage
-            className="text-sm text-red-700"
-            name="situation"
-            component="p"
-          />
-        </div>
-        <label className="input input-bordered flex items-center gap-2">
-          Email:
-          <Field
-            type="email"
-            name="email"
-            className="grow"
-            placeholder="daisy@site.com"
-          />
-          <ErrorMessage
-            className="text-sm text-red-700"
-            name="email"
-            component="p"
-          />
-        </label>
-        <label className="input input-bordered flex items-center gap-2">
-          Tel:
-          <Field
-            type="tel"
-            name="tel"
-            className="grow"
-            placeholder="+24300000000"
-          />
-          <ErrorMessage
-            className="text-sm text-red-700"
-            name="tel"
-            component="p"
-          />
-        </label>
-        <label className="input input-bordered flex items-center gap-2">
-          Mot de passe:
-          <Field
-            type="password"
-            name="password"
-            className="grow"
-            placeholder="votre mot de passe"
-          />
-          <ErrorMessage
-            className="text-sm text-red-700"
-            name="password"
-            component="p"
-          />
-        </label>
-        <label className="input input-bordered flex items-center gap-2">
-          Confirmer:
-          <Field
-            type="password"
-            name="cpassword"
-            className="grow"
-            placeholder="réecrire le mot de passe"
-          />
-          <ErrorMessage
-            className="text-sm text-red-700"
-            name="cpassword"
-            component="p"
-          />
-        </label>
-        <Field
-          name="description"
-          className="textarea grow  w-full h-32 p-4 border border-gray-300  rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          placeholder="faites une brève description de vous (vos activités...)"
-        />
-        <ErrorMessage
-          className="text-sm text-red-700"
-          name="description"
-          component="p"
-        />
-        <div className="flex justify-between">
-          <div className="flex flex-col">
-            <Link className="ml-4 btn-link" to="/connexion/entrepreneur">
-              connexion
-            </Link>
-            <Link
-              className="ml-4 btn-link link-success"
-              to="/connexion/investisseur"
-            >
-              vous êtes investisseur ?
-            </Link>
+          <div className="space-y-4">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Nom</span>
+              </label>
+              <Field
+                type="text"
+                name="nom"
+                className="input input-bordered w-full"
+                placeholder="Entrer votre nom"
+              />
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="nom"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Prénom</span>
+              </label>
+              <Field
+                type="text"
+                name="prenom"
+                className="input input-bordered w-full"
+                placeholder="Votre prénom"
+              />
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="prenom"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Email</span>
+              </label>
+              <Field
+                type="email"
+                name="email"
+                className="input input-bordered w-full"
+                placeholder="daisy@site.com"
+              />
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="email"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Téléphone</span>
+              </label>
+              <Field
+                type="tel"
+                name="tel"
+                className="input input-bordered w-full"
+                placeholder="+24300000000"
+              />
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="tel"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Mot de passe</span>
+              </label>
+              <Field
+                type="password"
+                name="password"
+                className="input input-bordered w-full"
+                placeholder="Votre mot de passe"
+              />
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="password"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Confirmer le mot de passe</span>
+              </label>
+              <Field
+                type="password"
+                name="cpassword"
+                className="input input-bordered w-full"
+                placeholder="Réécrire le mot de passe"
+              />
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="cpassword"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Description</span>
+              </label>
+              <Field
+                name="description"
+                className="textarea textarea-bordered w-full h-32"
+                placeholder="Faites une brève description de vous (vos activités...)"
+              />
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="description"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Genre</span>
+              </label>
+              <div className="flex space-x-4">
+                <label className="inline-flex items-center">
+                  <Field
+                    type="radio"
+                    className="radio radio-primary"
+                    name="genre"
+                    value="masculin"
+                  />
+                  <span className="ml-2">Homme</span>
+                </label>
+                <label className="inline-flex items-center">
+                  <Field
+                    type="radio"
+                    className="radio radio-primary"
+                    name="genre"
+                    value="feminin"
+                  />
+                  <span className="ml-2">Femme</span>
+                </label>
+              </div>
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="genre"
+                component="p"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Vous êtes</span>
+              </label>
+              <Field
+                as="select"
+                name="situation"
+                className="select select-primary w-full"
+              >
+                <option value="" disabled selected>
+                  Choisir une option
+                </option>
+                <option value="Travailleur">Travailleur</option>
+                <option value="Etudiant">Étudiant</option>
+                <option value="Eleve">Élève</option>
+                <option value="Chomeur">Chômeur</option>
+              </Field>
+              <ErrorMessage
+                className="text-sm text-red-700"
+                name="situation"
+                component="p"
+              />
+            </div>
           </div>
-        </div>
-        <Field
-          type="submit"
-          id="btns"
-          className="btn btn-success w-60 ml-auto"
-          value="Soumettre"
-        />
-        <Toaster position="top-center" reverseOrder={false} />
-      </Form>
-    </Formik>
+          <div className="flex justify-between">
+            <div className="flex flex-col">
+              <Link
+                className="ml-4 link link-hover text-primary"
+                to="/connexion"
+              >
+                Connexion
+              </Link>
+            </div>
+          </div>
+          <Field
+            type="submit"
+            className="btn btn-success w-full"
+            value="Soumettre"
+          />
+          <Toaster position="top-center" reverseOrder={false} />
+        </Form>
+      </Formik>
+    </div>
   );
 }
 

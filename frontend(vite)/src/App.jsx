@@ -2,11 +2,9 @@ import React, { useEffect } from "react";
 import "./App.css"; // Assurez-vous que ce fichier contient les styles DaisyUI
 import Navbar from "./composantsApp/Navbar";
 import { ThemeProvider, useTheme } from "./ThemeContext";
-import Intro from "./composantsApp/Intro";
 import Posts from "./posts/Posts";
 import Slider from "./composantsApp/SwiperSlider";
-import Footer from "./composantsApp/Footer";
-import Propose from "./composantsApp/Propose";
+import Connexion from "./connexion/Connexion";
 
 function AppContent() {
   const { theme } = useTheme();
@@ -20,7 +18,7 @@ function AppContent() {
       <Navbar />
 
       <Slider />
-      <Propose />
+      <Connexion />
       <Posts />
     </div>
   );

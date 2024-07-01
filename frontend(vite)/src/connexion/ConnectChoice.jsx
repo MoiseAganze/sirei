@@ -15,7 +15,7 @@ function ConnectChoice(props) {
             investisseurs
           </p>
           <div className="card-actions justify-end">
-            <Link to="/connexion/entrepreneur" className="btn btn-primary">
+            <Link to="/inscription/entrepreneur" className="btn btn-primary">
               inscription/connexion
             </Link>
           </div>
@@ -33,7 +33,7 @@ function ConnectChoice(props) {
             dans des entrepreneurs
           </p>
           <div className="card-actions justify-end">
-            <Link to="/connexion/investisseur" className="btn btn-primary">
+            <Link to="/inscription/investisseur" className="btn btn-primary">
               inscription/connexion
             </Link>
           </div>
